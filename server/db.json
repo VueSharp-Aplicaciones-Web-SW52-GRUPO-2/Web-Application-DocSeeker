@@ -1,0 +1,28 @@
+{
+  "News": [
+    {
+      "id": 1,
+      "title": "Covid en el 2023",
+      "date": "01/02/2023",
+      "description": "Washington D.C. 9 de marzo de 2023 (OPS)- Cuando la pandemia de COVID-19 entra en su tercer año en la Región de las Américas, el Director de la Organización Panamericana de la Salud (OPS), doctor Jarbas Barbosa, pidió a los países que refuercen la vigilancia y subsanen las deficiencias en cobertura de vacunación para terminar con la emergencia y prepararse mejor para futuras crisis sanitarias."
+    },
+    {
+      "id": 2,
+      "title": "Covid en el 2024",
+      "date": "01/02/2024",
+      "description": "New York 9 de marzo de 2023 (OPS)- Cuando la pandemia de COVID-19 entra en su tercer año en la Región de las Américas, el Director de la Organización Panamericana de la Salud (OPS), doctor Jarbas Barbosa, pidió a los países que refuercen la vigilancia y subsanen las deficiencias en cobertura de vacunación para terminar con la emergencia y prepararse mejor para futuras crisis sanitarias."
+    },
+    {
+      "id": 3,
+      "title": "Covid en el 2025",
+      "date": "01/02/2025",
+      "description": "Los Angeles 9 de marzo de 2023 (OPS)- Cuando la pandemia de COVID-19 entra en su tercer año en la Región de las Américas, el Director de la Organización Panamericana de la Salud (OPS), doctor Jarbas Barbosa, pidió a los países que refuercen la vigilancia y subsanen las deficiencias en cobertura de vacunación para terminar con la emergencia y prepararse mejor para futuras crisis sanitarias."
+    },
+    {
+      "id": 4,
+      "title": "Covid en el 2026",
+      "date": "01/02/2026",
+      "description": "California 9 de marzo de 2023 (OPS)- Cuando la pandemia de COVID-19 entra en su tercer año en la Región de las Américas, el Director de la Organización Panamericana de la Salud (OPS), doctor Jarbas Barbosa, pidió a los países que refuercen la vigilancia y subsanen las deficiencias en cobertura de vacunación para terminar con la emergencia y prepararse mejor para futuras crisis sanitarias."
+    }
+  ]
+}
