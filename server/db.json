@@ -63,5 +63,41 @@
       "weight": "86 kg",
       "bodyMass": "35 imc"
     }
+  ],
+  "doctors": [
+    {
+      "id": 1,
+      "name": "Dr. John Smith",
+      "specialty": "Cardiology",
+      "description": "Degree in cardiology in Spain, 10 years of experience",
+      "phone": "969-536-120",
+      "email": "john.smith@example.com"
+    },
+    {
+      "id": 2,
+      "name": "Dr. Jane Doe",
+      "specialty": "Pediatrics",
+      "description": "Degree in Pediatrics in Colombia, 12 years of experience",
+      "phone": "950-351-200",
+      "email": "jane.doe@example.com"
+    },
+    {
+      "id": 2,
+      "name": "Dr. Tim Lee",
+      "specialty": "Gynecology",
+      "description": "Degree in Gynecology in Argentina, 6 years of experience",
+      "phone": "953-356-7890",
+      "email": "tim.lee@example.com"
+    }
+  ],
+  "patients": [
+    {
+      "id": 1,
+      "name": "Julia Smith",
+      "birthday": "04/02/1961",
+      "email": "juliasmoth@example.com",
+      "phone": "930-356-7890",
+      "photo": "https://lamenteesmaravillosa.com/wp-content/uploads/2017/05/mujer-de-edad-avanzada-768x509.jpg?auto=webp&quality=45&width=1920&crop=16:9,smart,safe"
+    }
   ]
 }
