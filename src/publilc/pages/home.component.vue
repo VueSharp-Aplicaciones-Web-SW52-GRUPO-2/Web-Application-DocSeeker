@@ -12,8 +12,11 @@
         </div>
         <h1>Options</h1>
         <div class="grid text-center">
-            <div class="col-4"><pv-button size="large" class="w-full justify-content-center">Medical
-                History</pv-button></div>
+            <div class="col-4">
+                <pv-button size="large" class="w-full justify-content-center">
+                    <router-link to="/medicalHistory">Medical History</router-link>
+                </pv-button>
+            </div>
             <div class="col-4"><pv-button size="large" class="w-full justify-content-center">Profile</pv-button></div>
             <div class="col-4"><pv-button size="large" class="w-full justify-content-center">Appointment</pv-button></div>
         </div>

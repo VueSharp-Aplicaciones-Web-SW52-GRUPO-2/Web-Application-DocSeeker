@@ -25,12 +25,9 @@
 </template>
 
 <script>
-import MainContent from "./docseeker/pages/main-content.component.vue";
-import MedicalHistory from "./docseeker/pages/medical-history.component.vue";
 
 export default {
     name: "App",
-    components: {MainContent,MedicalHistory},
     data() {
         return {
             sidebarVisible: false

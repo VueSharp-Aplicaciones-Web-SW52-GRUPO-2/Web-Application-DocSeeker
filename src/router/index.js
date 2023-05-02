@@ -8,7 +8,8 @@ const router = createRouter({
     history: createWebHistory(),
     routes: [
         {path:"/home", component:HomeComponent},
-        {path:"/", redirect:"/home"}
+        {path:"/", redirect:"/home"},
+        {path:"/medicalHistory", name:"medicalHistory", component: () => import("../docseeker/pages/medical-history.component.vue")},
     ]
 });
 
