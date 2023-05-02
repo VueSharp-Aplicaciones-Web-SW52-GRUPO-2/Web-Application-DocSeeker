@@ -12,7 +12,7 @@
         </pv-toolbar>
     </header>
     <pv-sidebar v-model:visible="sidebarVisible"></pv-sidebar>
-
+    <router-view></router-view>
 </template>
 
 <script>
