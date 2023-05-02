@@ -14,12 +14,12 @@
         <div class="grid text-center">
             <div class="col-4">
                 <pv-button size="large" class="w-full justify-content-center">
-                    <router-link to="/medicalHistory">Medical History</router-link>
+                    <router-link to="/medicalHistory" class="text-white">Medical History</router-link>
                 </pv-button>
             </div>
             <div class="col-4">
                 <pv-button size="large" class="w-full justify-content-center">
-                    <router-link to="/myProfile">Profile</router-link>
+                    <router-link to="/myProfile" class="text-white">Profile</router-link>
                 </pv-button>
             </div>
             <div class="col-4"><pv-button size="large" class="w-full justify-content-center">Appointment</pv-button></div>
@@ -27,7 +27,7 @@
         <div class="grid">
             <div class="col-4">
                 <pv-button size="large" class="w-full justify-content-center">
-                    <router-link to="/doctorList">Doctors</router-link>
+                    <router-link to="/doctorList" class="text-white">Doctors</router-link>
                 </pv-button>
             </div>
             <div
