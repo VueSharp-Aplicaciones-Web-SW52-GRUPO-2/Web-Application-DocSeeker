@@ -2,9 +2,9 @@
     <div class="backButton">
     </div>
     <main class="userProfileContainer">
-        <section class="userInformation">
+        <section class="userInformation w-full">
             <div class="profilePhotoContainer">
-                <img class="profilePhoto" :src="this.patient.photo">
+                <img class="profilePhoto" :src="this.patient.photo" alt="patient photo">
             </div>
 
             <div class="userData">
@@ -28,7 +28,7 @@
             </div>
         </section>
 
-        <section class="additionalLinks">
+        <section class="additionalLinks w-full">
 
             <div class="leftCol">
                 <div class="additionalLinksIcon">
@@ -49,7 +49,7 @@
 
         </section>
 
-        <section class="additionalLinks">
+        <section class="additionalLinks w-full">
 
             <div class="leftCol">
                 <div class="additionalLinksIcon">
@@ -71,7 +71,7 @@
             </div>
         </section>
 
-        <section class="additionalLinks">
+        <section class="additionalLinks w-full">
 
             <div class="leftCol">
                 <div class="additionalLinksIcon">
@@ -112,7 +112,7 @@ export default {
     },
     created() {
         axios.get('../../../server/db.json').then(response => {
-            this.patient = response.data.patients[0];
+            this.patient = response.data.patient[0];
         });
     },
 };

@@ -17,11 +17,19 @@
                     <router-link to="/medicalHistory">Medical History</router-link>
                 </pv-button>
             </div>
-            <div class="col-4"><pv-button size="large" class="w-full justify-content-center">Profile</pv-button></div>
+            <div class="col-4">
+                <pv-button size="large" class="w-full justify-content-center">
+                    <router-link to="/myProfile">Profile</router-link>
+                </pv-button>
+            </div>
             <div class="col-4"><pv-button size="large" class="w-full justify-content-center">Appointment</pv-button></div>
         </div>
         <div class="grid">
-            <div class="col-4"><pv-button size="large" class="w-full justify-content-center">Doctors</pv-button></div>
+            <div class="col-4">
+                <pv-button size="large" class="w-full justify-content-center">
+                    <router-link to="/doctorList">Doctors</router-link>
+                </pv-button>
+            </div>
             <div
                 class="col-4"><pv-button size="large" class="w-full justify-content-center">Prescriptions</pv-button></div>
             <div class="col-4"><pv-button size="large" class="w-full justify-content-center">News</pv-button></div>

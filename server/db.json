@@ -90,7 +90,7 @@
       "email": "tim.lee@example.com"
     }
   ],
-  "patients": [
+  "patient": [
     {
       "id": 1,
       "name": "Julia Smith",
