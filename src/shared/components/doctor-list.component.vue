@@ -15,7 +15,7 @@
 
 <script>
 import axios from "axios";
-import DoctorCard from "src/docseeker/pages/card-doctor.component.vue";
+import DoctorCard from "../../docseeker/pages/card-doctor.component.vue";
 
 export default {
     components: {
@@ -28,7 +28,7 @@ export default {
     },
     async created() {
         try {
-            const response = await axios.get("/data.json");
+            const response = await axios.get('../../../server/db.json');
             this.doctors = response.data.doctors;
         } catch (error) {
             console.error(error);
