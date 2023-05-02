@@ -44,7 +44,7 @@
             <b id="bAll">Allergies:</b>
             <hr>
         </div>
-        <div id="allergieslist" style="color:#E3D90A; font-size: 20px" v-if="patient.length > 0">
+        <div id="allergieslist" style="color:white; font-size: 20px" v-if="patient.length > 0">
             <ul>
                 <li style="text-align: left">
                     {{patient[0].allergies[0]}}
@@ -65,7 +65,7 @@
             <b id="bPath">Pathological History:</b>
             <hr>
         </div>
-        <div id="pathologicallist" style="color:darkred; font-size: 20px" v-if="patient.length > 0">
+        <div id="pathologicallist" style="color:white; font-size: 20px" v-if="patient.length > 0">
             <ul>
                 <li style="text-align: left">
                     {{patient[0].pathological[0]}}

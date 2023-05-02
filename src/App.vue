@@ -4,7 +4,8 @@
             <template #start>
                 <pv-button class="p-button-text text-white" icon="pi pi-bars"
                            @click="sidebarVisible = !sidebarVisible"></pv-button>
-                <h3><a href="https://vuesharp-aplicaciones-web-sw52-grupo-2.github.io/Landing-Page-DocSeeker/public/ " target="_blank">DocSeeker</a></h3>
+                <h3><a
+                    href="https://vuesharp-aplicaciones-web-sw52-grupo-2.github.io/Landing-Page-DocSeeker/public/ " target="_blank" class="text-white">DocSeeker</a></h3>
             </template>
             <template #end>
 
