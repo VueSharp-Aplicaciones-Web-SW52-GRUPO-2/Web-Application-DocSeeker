@@ -1,13 +1,18 @@
-<template>
-
-</template>
-
-<script >
+<script>
+import MedicalHistory from "./docseeker/pages/medical-history.component.vue";
 export default {
-    name: "App"
+    name: 'App',
+    components:{MedicalHistory},
+    data(){
+    }
 }
 </script>
 
-<style scoped>
+<template>
+  <div id="app">
+      <medical-history></medical-history>
+  </div>
+</template>
 
+<style>
 </style>
