@@ -24,5 +24,44 @@
       "date": "01/02/2026",
       "description": "California March 9, 2023 (PAHO)- As the COVID-19 pandemic enters its third year in the Region of the Americas, the Director of the Pan American Health Organization (PAHO), Dr. Jarbas Barbosa, asked the countries to strengthen surveillance and fill gaps in vaccination coverage to end the emergency and better prepare for future health crises."
     }
+  ],
+  "patients": [
+    {
+      "id": 1,
+      "name": "Alessia Rodriguez",
+      "height": "1.63 cm",
+      "weight": "69 kg",
+      "bodyMass": "27 imc",
+      "allergies": ["Peanut","Fish","Cheese"],
+      "pathological": ["Diabetes", "Gastritis", "Chickenpox"]
+    },
+    {
+      "id": 2,
+      "name": "Juan Cuesta",
+      "height": "1.80 cm",
+      "weight": "71 kg",
+      "bodyMass": "30 imc"
+    },
+    {
+      "id": 3,
+      "name": "Carla Acosta",
+      "height": "1.72 cm",
+      "weight": "71 kg",
+      "bodyMass": "30 imc"
+    },
+    {
+      "id": 4,
+      "name": "Bertha Llanos",
+      "height": "1.60 cm",
+      "weight": "64 kg",
+      "bodyMass": "29 imc"
+    },
+    {
+      "id": 5,
+      "name": "Arturo Conde",
+      "height": "1.93 cm",
+      "weight": "86 kg",
+      "bodyMass": "35 imc"
+    }
   ]
 }
