@@ -1,0 +1,64 @@
+{
+  "news": [
+    {
+      "id": 1,
+      "title": "Covid in 2023",
+      "date": "01/02/2023",
+      "description": "Washington DC March 9, 2023 (PAHO)- As the COVID-19 pandemic enters its third year in the Region of the Americas, the Director of the Pan American Health Organization (PAHO), Dr. Jarbas Barbosa, asked the countries to strengthen surveillance and fill gaps in vaccination coverage to end the emergency and better prepare for future health crises."
+    },
+    {
+      "id": 2,
+      "title": "Covid in 2024",
+      "date": "01/02/2024",
+      "description": "New York March 9, 2023 (PAHO)- As the COVID-19 pandemic enters its third year in the Region of the Americas, the Director of the Pan American Health Organization (PAHO), Dr. Jarbas Barbosa, asked the countries to strengthen surveillance and fill gaps in vaccination coverage to end the emergency and better prepare for future health crises."
+    },
+    {
+      "id": 3,
+      "title": "Covid in 2025",
+      "date": "01/02/2025",
+      "description": "Los Angeles March 9, 2023 (PAHO)- As the COVID-19 pandemic enters its third year in the Region of the Americas, the Director of the Pan American Health Organization (PAHO), Dr. Jarbas Barbosa, asked the countries to strengthen surveillance and fill gaps in vaccination coverage to end the emergency and better prepare for future health crises."
+    },
+    {
+      "id": 4,
+      "title": "Covid in 2026",
+      "date": "01/02/2026",
+      "description": "California March 9, 2023 (PAHO)- As the COVID-19 pandemic enters its third year in the Region of the Americas, the Director of the Pan American Health Organization (PAHO), Dr. Jarbas Barbosa, asked the countries to strengthen surveillance and fill gaps in vaccination coverage to end the emergency and better prepare for future health crises."
+    }
+  ],
+  "doctors": [
+    {
+      "id": 1,
+      "name": "Dr. John Smith",
+      "specialty": "Cardiology",
+      "description": "Degree in cardiology in Spain, 10 years of experience",
+      "phone": "969-536-120",
+      "email": "john.smith@example.com"
+    },
+    {
+      "id": 2,
+      "name": "Dr. Jane Doe",
+      "specialty": "Pediatrics",
+      "description": "Degree in Pediatrics in Colombia, 12 years of experience",
+      "phone": "950-351-200",
+      "email": "jane.doe@example.com"
+    },
+    {
+      "id": 2,
+      "name": "Dr. Tim Lee",
+      "specialty": "Gynecology",
+      "description": "Degree in Gynecology in Argentina, 6 years of experience",
+      "phone": "953-356-7890",
+      "email": "tim.lee@example.com"
+    }
+  ],
+  "patients": [
+    {
+      "id": 1,
+      "name": "Julia Smith",
+      "birthday": "04/02/1961",
+      "email": "juliasmoth@example.com",
+      "phone": "930-356-7890",
+      "photo": "https://lamenteesmaravillosa.com/wp-content/uploads/2017/05/mujer-de-edad-avanzada-768x509.jpg?auto=webp&quality=45&width=1920&crop=16:9,smart,safe"
+    }
+  ]
+}
