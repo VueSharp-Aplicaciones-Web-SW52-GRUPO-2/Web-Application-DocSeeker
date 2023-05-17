@@ -99,5 +99,35 @@
       "phone": "930-356-7890",
       "photo": "https://lamenteesmaravillosa.com/wp-content/uploads/2017/05/mujer-de-edad-avanzada-768x509.jpg?auto=webp&quality=45&width=1920&crop=16:9,smart,safe"
     }
+  ],
+  "prescriptions": [
+    {
+      "id": 1,
+      "date": "16/05/2023",
+      "specialty": "Dermatology",
+      "doctor_name": "Enrike Alexander Costa Palomino",
+      "state": "accomplished"
+    },
+    {
+      "id": 2,
+      "date": "15/05/2023",
+      "specialty": "Geriatrics",
+      "doctor_name": "Juan Carlos López García",
+      "state": "pending"
+    },
+    {
+      "id": 3,
+      "date": "14/05/2023",
+      "specialty": "Cardiology",
+      "doctor_name": "María Isabel Rodríguez Martínez",
+      "state": "pending"
+    },
+    {
+      "id": 4,
+      "date": "13/05/2023",
+      "specialty": "Psychiatry",
+      "doctor_name": "Carlos Andrés Sánchez González",
+      "state": "accomplished"
+    }
   ]
 }
