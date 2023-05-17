@@ -10,6 +10,7 @@
                 </div>
             </div>
         </div>
+
         <h1>Options</h1>
         <div class="grid text-center">
             <div class="col-4">

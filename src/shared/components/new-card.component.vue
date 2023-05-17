@@ -27,5 +27,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
-
+.card {
+    padding: 2em;
+}
 </style>
