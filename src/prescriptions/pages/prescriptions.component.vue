@@ -1,6 +1,19 @@
 <template>
   <div class="content-edges">
-      <h1>Prescription</h1>
+      <div>
+          <h1>Prescription</h1>
+          <h1>Prescription</h1>
+      </div>
+      <div>
+          <data-table>
+              <header>
+
+              </header>
+              <pv-column>
+
+              </pv-column>
+          </data-table>
+      </div>
 
   </div>
 </template>
@@ -9,7 +22,8 @@
 import {defineComponent} from 'vue'
 
 export default defineComponent({
-    name: "prescriptions"
+    name: "prescriptions",
+    components: {PvColumn}
 })
 </script>
 
