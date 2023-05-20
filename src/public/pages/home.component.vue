@@ -15,25 +15,37 @@
         <div class="grid text-center">
             <div class="col-4">
                 <pv-button size="large" class="w-full justify-content-center">
-                    <router-link to="/medicalHistory" class="text-white">Medical History</router-link>
+                    <router-link to="/medical-record" class="text-white">Medical Record</router-link>
                 </pv-button>
             </div>
             <div class="col-4">
                 <pv-button size="large" class="w-full justify-content-center">
-                    <router-link to="/myProfile" class="text-white">Profile</router-link>
+                    <router-link to="/my-profile" class="text-white">Profile</router-link>
                 </pv-button>
             </div>
-            <div class="col-4"><pv-button size="large" class="w-full justify-content-center">Appointment</pv-button></div>
+            <div class="col-4">
+              <pv-button size="large" class="w-full justify-content-center">
+                Appointment
+              </pv-button>
+            </div>
         </div>
+
         <div class="grid">
             <div class="col-4">
                 <pv-button size="large" class="w-full justify-content-center">
-                    <router-link to="/doctorList" class="text-white">Doctors</router-link>
+                    <router-link to="/doctor-list" class="text-white">Doctors</router-link>
                 </pv-button>
             </div>
-            <div
-                class="col-4"><pv-button size="large" class="w-full justify-content-center">Prescriptions</pv-button></div>
-            <div class="col-4"><pv-button size="large" class="w-full justify-content-center">News</pv-button></div>
+            <div class="col-4">
+              <pv-button size="large" class="w-full justify-content-center">
+                <router-link to="/prescription" class="text-white">Prescriptions</router-link>
+              </pv-button>
+            </div>
+            <div class="col-4">
+              <pv-button size="large" class="w-full justify-content-center">
+                News
+              </pv-button>
+            </div>
         </div>
 
     </div>
