@@ -1,8 +1,6 @@
 <template>
-    <div class="backButton">
-    </div>
     <main class="userProfileContainer">
-        <section class="userInformation w-full">
+        <section class="userInformation w-10">
             <div class="profilePhotoContainer">
                 <img class="profilePhoto" :src="this.patient.photo" alt="patient photo">
             </div>
@@ -28,7 +26,7 @@
             </div>
         </section>
 
-        <section class="additionalLinks w-full">
+        <section class="additionalLinks w-10">
 
             <div class="leftCol">
                 <div class="additionalLinksIcon">
@@ -49,7 +47,7 @@
 
         </section>
 
-        <section class="additionalLinks w-full">
+        <section class="additionalLinks w-10">
 
             <div class="leftCol">
                 <div class="additionalLinksIcon">
@@ -71,7 +69,7 @@
             </div>
         </section>
 
-        <section class="additionalLinks w-full">
+        <section class="additionalLinks w-10">
 
             <div class="leftCol">
                 <div class="additionalLinksIcon">
@@ -120,12 +118,9 @@ export default {
 
 <style scoped>
 
-.backButton{
-    display:flex;
-    align-items: center;
-}
 
 .userProfileContainer {
+    padding-top: 20px;
     display: flex;
     flex-flow: column;
     align-items: center;
@@ -192,7 +187,7 @@ export default {
 }
 
 .additionalLinksText {
-    margin-left: 10%;
+    margin-left: 5%;
 }
 
 .additionalLinksGoToLink {
