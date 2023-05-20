@@ -105,29 +105,105 @@
       "id": 1,
       "date": "16/05/2023",
       "specialty": "Dermatology",
-      "doctor_name": "Enrike Alexander Costa Palomino",
-      "state": "accomplished"
+      "doctorName": "Enrike Alexander Costa Palomino",
+      "state": "accomplished",
+      "medicines": [
+        {
+          "name": "Retin-A (tretinoína)",
+          "dose": "1 tablet",
+          "period": "every 8 hours",
+          "routeOfAdministration": "topical",
+          "duration": "7 days",
+          "specialInstructions": "none"
+        },
+        {
+          "name": "Corticoesteroides ",
+          "dose": "10 ml",
+          "period": "every 24 hours",
+          "routeOfAdministration": "orally",
+          "duration": "15 days",
+          "specialInstructions": "none"
+        }
+      ],
+      "recommendations": "The patient is recommended to avoid prolonged exposure to the sun without sunscreen, use a broad-spectrum sunscreen daily, and stay hydrated. It is also advisable to avoid the use of irritating or abrasive products on the skin and to maintain a balanced diet rich in fruits and vegetables."
     },
     {
       "id": 2,
       "date": "15/05/2023",
       "specialty": "Geriatrics",
-      "doctor_name": "Juan Carlos López García",
-      "state": "pending"
+      "doctorName": "Juan Carlos López García",
+      "state": "pending",
+      "medicines": [
+        {
+          "name": "Retin-B (tretinoína)",
+          "dose": "1 tablet",
+          "period": "every 8 hours",
+          "routeOfAdministration": "topical",
+          "duration": "7 days",
+          "specialInstructions": "none"
+        },
+        {
+          "name": "Corticoesteroides ",
+          "dose": "10 ml",
+          "period": "every 24 hours",
+          "routeOfAdministration": "orally",
+          "duration": "15 days",
+          "specialInstructions": "none"
+        }
+      ],
+      "recommendations": "The patient is recommended to avoid prolonged exposure to the sun without sunscreen, use a broad-spectrum sunscreen daily, and stay hydrated. It is also advisable to avoid the use of irritating or abrasive products on the skin and to maintain a balanced diet rich in fruits and vegetables."
     },
     {
       "id": 3,
       "date": "14/05/2023",
       "specialty": "Cardiology",
-      "doctor_name": "María Isabel Rodríguez Martínez",
-      "state": "pending"
+      "doctorName": "María Isabel Rodríguez Martínez",
+      "state": "pending",
+      "medicines": [
+        {
+          "name": "Retin-C (tretinoína)",
+          "dose": "1 tablet",
+          "period": "every 8 hours",
+          "routeOfAdministration": "topical",
+          "duration": "7 days",
+          "specialInstructions": "none"
+        },
+        {
+          "name": "Corticoesteroides ",
+          "dose": "10 ml",
+          "period": "every 24 hours",
+          "routeOfAdministration": "orally",
+          "duration": "15 days",
+          "specialInstructions": "none"
+        }
+      ],
+      "recommendations": "The patient is recommended to avoid prolonged exposure to the sun without sunscreen, use a broad-spectrum sunscreen daily, and stay hydrated. It is also advisable to avoid the use of irritating or abrasive products on the skin and to maintain a balanced diet rich in fruits and vegetables."
     },
     {
       "id": 4,
       "date": "13/05/2023",
       "specialty": "Psychiatry",
-      "doctor_name": "Carlos Andrés Sánchez González",
-      "state": "accomplished"
+      "doctorName": "Carlos Andrés Sánchez González",
+      "state": "accomplished",
+      "medicines": [
+        {
+          "name": "Retin-D (tretinoína)",
+          "dose": "1 tablet",
+          "period": "every 8 hours",
+          "routeOfAdministration": "topical",
+          "duration": "7 days",
+          "specialInstructions": "none"
+        },
+        {
+          "name": "Corticoesteroides ",
+          "dose": "10 ml",
+          "period": "every 24 hours",
+          "routeOfAdministration": "orally",
+          "duration": "15 days",
+          "specialInstructions": "none"
+        }
+      ],
+      "recommendations": "The patient is recommended to avoid prolonged exposure to the sun without sunscreen, use a broad-spectrum sunscreen daily, and stay hydrated. It is also advisable to avoid the use of irritating or abrasive products on the skin and to maintain a balanced diet rich in fruits and vegetables."
     }
   ]
 }
