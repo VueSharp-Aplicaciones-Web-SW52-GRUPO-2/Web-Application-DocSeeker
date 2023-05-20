@@ -1,7 +1,7 @@
 // Routing Module
 
 import { createRouter, createWebHistory } from "vue-router";
-import HomeComponent from "../publilc/pages/home.component.vue";
+import HomeComponent from "../public/pages/home.component.vue";
 
 
 const router = createRouter({
@@ -9,21 +9,30 @@ const router = createRouter({
     routes: [
         {path:"/home", component:HomeComponent},
         {path:"/", redirect:"/home"},
-        {path:"/medicalHistory", name:"medicalHistory", component: () => import("../docseeker/pages/medical-history.component.vue")},
         {
-            path: "/doctorList",
-            name: "DoctorList",
+            path:"/medical-record",
+            name:"medical-record",
+            component: () => import("../docseeker/pages/medical-history.component.vue")
+        },
+        {
+            path: "/doctor-list",
+            name: "doctor-list",
             component: () => import('../shared/components/doctor-list.component.vue')
         },
         {
-            path: '/myProfile',
-            name: 'myProfiler',
+            path: '/my-profile',
+            name: 'my-profile',
             component: () => import('../docseeker/pages/patient-profile.component.vue')
         },
         {
-            path: '/personalInformation',
-            name: 'PersonalInformation',
+            path: '/personal-information',
+            name: 'personal-information',
             component: () => import('../docseeker/pages/personal-information.component.vue')
+        },
+        {
+            path: '/prescriptions',
+            name: 'prescriptions',
+            component: () => import('../prescriptions/pages/prescriptions.component.vue')
         }
     ]
 });
