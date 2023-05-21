@@ -1,5 +1,5 @@
 <template>
-  <div class="global-container">
+  <div class="section-container">
     <div class="title-section-container">
       <h1>Prescriptions</h1>
     </div>

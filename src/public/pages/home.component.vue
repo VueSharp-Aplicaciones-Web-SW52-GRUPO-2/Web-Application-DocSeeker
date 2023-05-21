@@ -1,7 +1,7 @@
 <template>
-    <div>
+    <div class="section-container">
         <h1>News</h1>
-        <div class="flex flex-row">
+        <div class="flex flex-row text-center justify-content-center">
             <div v-for="(singleNew,index) in news">
                 <div v-if="index < 3">
                     <div class="flex align-items-center justify-content-center">
@@ -38,7 +38,7 @@
             </div>
             <div class="col-4">
               <pv-button size="large" class="w-full justify-content-center">
-                <router-link to="/prescription" class="text-white">Prescriptions</router-link>
+                <router-link to="/prescriptions" class="text-white">Prescriptions</router-link>
               </pv-button>
             </div>
             <div class="col-4">
