@@ -1,7 +1,7 @@
 <template>
   <div class="global-container">
     <div class="title-section-container">
-      <h1>Prescription</h1>
+      <h1>Prescriptions</h1>
     </div>
     <div class="data-table-container">
       <pv-toolbar class="mb-4">
@@ -11,7 +11,7 @@
         </template>
       </pv-toolbar>
 
-      <data-table ref="dt" :value="prescriptions" v-model:selection="selectedPrescriptions"
+      <pv-data-table ref="dt" :value="prescriptions" v-model:selection="selectedPrescriptions"
                   dataKey="id" :paginator="true" :rows="10" :filters="filters"
                   paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
                   :rowsPerPageOptions="[5,10,25]"
@@ -27,22 +27,20 @@
           </div>
         </template>
 
-        <pv-column selectionMode="multiple" style="width: 3rem" :exportable="false"></pv-column>
-        <pv-column field="code" header="Code" sortable style="min-width:12rem"></pv-column>
-        <pv-column field="name" header="Name" sortable style="min-width:16rem"></pv-column>
-        <pv-column field="price" header="Price" sortable style="min-width:8rem">
-          <template #body="slotProps">
-            {{ formatCurrency(slotProps.data.price) }}
-          </template>
-        </pv-column>
-        <pv-column field="category" header="Category" sortable style="min-width:10rem"></pv-column>
+        <pv-column field="id" header="Id" sortable style="min-width:8rem"></pv-column>
+        <pv-column field="date" header="Date" sortable
+                   style="min-width:12rem"></pv-column>
+        <pv-column field="doctorName" header="Doctor Name" sortable
+                   style="min-width:16rem"></pv-column>
+        <pv-column field="specialty" header="Specialty" sortable
+                   style="min-width:10rem"></pv-column>
         <pv-column field="prescriptionStatus" header="Status" sortable style="min-width:12rem">
           <template #body="slotProps">
-            <pv-tag :value="slotProps.data.prescriptionStatus"
-                    :severity="getStatusLabel(slotProps.data.prescriptionStatus)"></pv-tag>
+            <pv-tag :value="slotProps.data.state"
+                    :severity="getStatusLabel(slotProps.data.state)"></pv-tag>
           </template>
         </pv-column>
-      </data-table>
+      </pv-data-table>
     </div>
 
   </div>
@@ -50,9 +48,57 @@
 
 <script>
 import {FilterMatchMode} from "primevue/api";
+import {PrescriptionsApiService} from "../services/prescriptions-api.service.js";
 
 export default {
-  name: "prescriptions"
+  name: "prescriptions",
+  data() {
+    return {
+      prescriptionsService: null,
+      prescriptions: null,
+      selectedPrescriptions: null,
+      filters: {},
+      statuses: [
+        {label: "ACCOMPLISHED", value: "accomplished"},
+        {label: "PENDING", value: "pending"},
+        {label: "CANCELLED", value: "cancelled"}
+      ]
+    }
+  },
+  created() {
+    this.prescriptionsService = new PrescriptionsApiService();
+    this.prescriptionsService.getAll()
+        .then(response => this.prescriptions = response.data);
+    this.initFilters();
+  },
+  mounted(){
+
+  },
+  methods: {
+    initFilters() {
+      this.filters = {
+        'global': {value: null, matchMode: FilterMatchMode.CONTAINS},
+      }
+    },
+    exportCSV() {
+      this.$refs.dt.exportCSV();
+    },
+    getStatusLabel(status) {
+      switch (status) {
+        case 'ACCOMPLISHED':
+          return 'success';
+
+        case 'PENDING':
+          return 'warning';
+
+        case 'CANCELLED':
+          return 'danger';
+
+        default:
+          return null;
+      }
+    }
+  }
 }
 </script>
 
