@@ -85,13 +85,13 @@ export default {
     },
     getStatusLabel(status) {
       switch (status) {
-        case 'ACCOMPLISHED':
+        case 'accomplished':
           return 'success';
 
-        case 'PENDING':
+        case 'pending':
           return 'warning';
 
-        case 'CANCELLED':
+        case 'cancelled':
           return 'danger';
 
         default:
