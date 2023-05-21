@@ -103,7 +103,7 @@
   "prescriptions": [
     {
       "id": 1,
-      "date": "16/05/2023",
+      "date": "2023/05/16",
       "specialty": "Dermatology",
       "doctorName": "Enrike Alexander Costa Palomino",
       "state": "accomplished",
@@ -129,7 +129,7 @@
     },
     {
       "id": 2,
-      "date": "15/05/2023",
+      "date": "2023/05/15",
       "specialty": "Geriatrics",
       "doctorName": "Juan Carlos López García",
       "state": "pending",
@@ -155,7 +155,7 @@
     },
     {
       "id": 3,
-      "date": "14/05/2023",
+      "date": "2023/05/14",
       "specialty": "Cardiology",
       "doctorName": "María Isabel Rodríguez Martínez",
       "state": "pending",
@@ -181,7 +181,7 @@
     },
     {
       "id": 4,
-      "date": "13/05/2023",
+      "date": "2023/05/13",
       "specialty": "Psychiatry",
       "doctorName": "Carlos Andrés Sánchez González",
       "state": "accomplished",
