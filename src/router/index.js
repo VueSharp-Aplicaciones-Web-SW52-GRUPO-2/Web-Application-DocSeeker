@@ -26,18 +26,18 @@ const router = createRouter({
             component: () => import('../docseeker/pages/personal-information.component.vue')
         },
         {
-            path: '/appointmentCalendar',
+            path: '/appointment-calendar',
             name: 'appointmentCalendar',
             component: () => import('../appointment/pages/appointment-calendar.component.vue')
         },
         {
-            path: '/appointmentCalendar',
+            path: '/appointment-booking',
             name: 'appointmentHour',
             component: () => import('../appointment/pages/appointment-booking.component.vue')
         },
         {
             path: '/appointment',
-            name: 'patientAppoinment',
+            name: 'patient-appointment',
             component: () => import('../docseeker/pages/patient-appoinment.component.vue')
         }
     ]
