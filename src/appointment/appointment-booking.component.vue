@@ -1,5 +1,5 @@
 <script setup>
-import HourAvailable from "../../docseeker/pages/hour-available.component.vue"
+import HourAvailable from "./hour-available.component.vue"
 </script>
 
 <script>

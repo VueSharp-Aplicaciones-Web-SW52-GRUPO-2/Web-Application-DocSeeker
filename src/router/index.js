@@ -28,12 +28,12 @@ const router = createRouter({
         {
             path: '/appointmentCalendar',
             name: 'appointmentCalendar',
-            component: () => import('../docseeker/pages/appointment-calendar.component.vue')
+            component: () => import('../appointment/appointment-calendar.component.vue')
         },
         {
             path: '/appointmentCalendar',
             name: 'appointmentHour',
-            component: () => import('../docseeker/pages/appointment-booking.component.vue')
+            component: () => import('../appointment/appointment-booking.component.vue')
         },
         {
             path: '/appointment',
