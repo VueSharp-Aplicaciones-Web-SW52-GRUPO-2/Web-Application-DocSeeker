@@ -33,6 +33,21 @@ const router = createRouter({
             path: '/prescriptions',
             name: 'prescriptions',
             component: () => import('../prescriptions/pages/prescriptions.component.vue')
+        },
+        {
+            path: '/appointment-calendar',
+            name: 'appointmentCalendar',
+            component: () => import('../appointment/pages/appointment-calendar.component.vue')
+        },
+        {
+            path: '/appointment-booking',
+            name: 'appointmentHour',
+            component: () => import('../appointment/pages/appointment-booking.component.vue')
+        },
+        {
+            path: '/appointment',
+            name: 'patient-appointment',
+            component: () => import('../docseeker/pages/patient-appoinment.component.vue')
         }
     ]
 });

@@ -9,9 +9,7 @@
             <div class="imgContainer">
                 <img :src="profilePhotoURL" alt="">
             </div>
-
             <pv-button class="saveButton p-button-lg">Save</pv-button>
-
         </div>
 
         <div class="rightCol">

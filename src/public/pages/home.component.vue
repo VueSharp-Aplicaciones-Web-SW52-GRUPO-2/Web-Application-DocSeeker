@@ -25,9 +25,8 @@
             </div>
             <div class="col-4">
               <pv-button size="large" class="w-full justify-content-center">
-                Appointment
-              </pv-button>
-            </div>
+                <router-link to="/appointment-calendar" class="text-white">Appointment</router-link>
+              </pv-button></div>
         </div>
 
         <div class="grid">
