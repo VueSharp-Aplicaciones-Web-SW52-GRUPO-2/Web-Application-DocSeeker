@@ -28,12 +28,12 @@ const router = createRouter({
         {
             path: '/appointmentCalendar',
             name: 'appointmentCalendar',
-            component: () => import('../appointment/appointment-calendar.component.vue')
+            component: () => import('../appointment/pages/appointment-calendar.component.vue')
         },
         {
             path: '/appointmentCalendar',
             name: 'appointmentHour',
-            component: () => import('../appointment/appointment-booking.component.vue')
+            component: () => import('../appointment/pages/appointment-booking.component.vue')
         },
         {
             path: '/appointment',

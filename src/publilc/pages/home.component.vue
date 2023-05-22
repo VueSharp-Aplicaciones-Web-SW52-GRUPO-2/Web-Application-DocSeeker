@@ -23,7 +23,10 @@
                     <router-link to="/myProfile" class="text-white">Profile</router-link>
                 </pv-button>
             </div>
-            <div class="col-4"><pv-button size="large" class="w-full justify-content-center">Appointment</pv-button></div>
+            <div class="col-4">
+              <pv-button size="large" class="w-full justify-content-center">
+                <router-link to="/appointmentCalendar" class="text-white">Appointment</router-link>
+              </pv-button></div>
         </div>
         <div class="grid">
             <div class="col-4">
