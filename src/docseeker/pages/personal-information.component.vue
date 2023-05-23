@@ -1,6 +1,7 @@
 <template>
     <div class="backButton">
-        <router-link to="/myProfile"><i class="pi pi-angle-left" style="font-size: 200%"></i></router-link>
+        <router-link
+            to="/my-profile"><i class="pi pi-angle-left" style="font-size: 200%"></i></router-link>
         <h1>Personal Information</h1>
     </div>
 

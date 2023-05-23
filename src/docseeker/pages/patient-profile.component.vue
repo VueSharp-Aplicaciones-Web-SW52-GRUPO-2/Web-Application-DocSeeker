@@ -85,7 +85,8 @@
             </div>
 
             <div class="additionalLinksGoToLink rightCol">
-                <router-link to="/personalInformation"><i class="pi pi-arrow-right" style="font-size: 1.5rem" ></i></router-link>
+                <router-link to="/personal-information"><i class="pi pi-arrow-right"
+                                                           style="font-size: 1.5rem" ></i></router-link>
             </div>
         </section>
 
