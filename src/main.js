@@ -27,6 +27,8 @@ import Dropdown from "primevue/dropdown";
 import Tag from "primevue/tag";
 import Card from "primevue/card";
 import Calendar from 'primevue/calendar';
+import Accordion from 'primevue/accordion';
+import AccordionTab from 'primevue/accordiontab';
 
 // Toast Service
 import ToastService from "primevue/toastservice";
@@ -53,4 +55,6 @@ createApp(App)
     .component('pv-tag', Tag)
     .component('pv-card', Card)
     .component('pv-calendar', Calendar)
+    .component('pv-accordion', Accordion)
+    .component('pv-accordion-tab', AccordionTab)
     .mount('#app')
