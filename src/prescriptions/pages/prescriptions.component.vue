@@ -40,29 +40,80 @@
                     :severity="getStatusLabel(slotProps.data.state)"></pv-tag>
           </template>
         </pv-column>
+
+        <pv-column :exportable="false" style="min-width:8rem">
+          <template #body="slotProps">
+            <pv-button icon="pi pi-eye" outlined rounded
+                       @click="showDetails(slotProps.data)"></pv-button>
+          </template>
+        </pv-column>
       </pv-data-table>
     </div>
 
+    <pv-dialog v-model:visible="prescriptionDialog" :style="{width: '750px'}"
+               header="Prescription Details" :modal="true" class="p-fluid">
+        <div class="prescriptions-selected title">
+          <pv-card :pt="{ body: { class: 'bg-primary border-round-lg' } }">
+            <template #title>Medical Prescription Status</template>
+            <template #content>
+              <p><b>Prescription date:</b> {{ prescription.date }}</p>
+              <p><b>State: </b>
+                <pv-tag :value="prescription.state"
+                        :severity="getStatusLabel(prescription.state)"></pv-tag>
+              </p>
+            </template>
+          </pv-card>
+        </div>
+        <div class="prescriptions-selected doctor-info">
+          <pv-card :pt="{ body: { class: 'bg-primary border-round-lg' } }">
+            <template #title>Doctor Information</template>
+            <template #content>
+              <p><b>Doctor name:</b> {{ prescription.doctorName }}</p>
+              <p><b>Specialty:</b> {{ prescription.specialty }}</p>
+            </template>
+          </pv-card>
+        </div>
+        <div class="prescriptions-selected recommendations">
+          <pv-card :pt="{ body: { class: 'bg-primary border-round-lg' } }">
+            <template #title>Doctor Recommendations</template>
+            <template #content>
+              <p>{{ prescription.recommendations }}</p>
+            </template>
+          </pv-card>
+        </div>
+        <div class="prescriptions-selected medicines">
+          <pv-card :pt="{ body: { class: 'bg-primary border-round-lg' } }">
+            <template #title>Medicines</template>
+            <template #content>
+              <medicines-list :medicines="prescription.medicines"></medicines-list>
+            </template>
+          </pv-card>
+        </div>
+    </pv-dialog>
   </div>
 </template>
 
 <script>
 import {FilterMatchMode} from "primevue/api";
 import {PrescriptionsApiService} from "../services/prescriptions-api.service.js";
+import MedicinesList from "../components/medicines-list.component.vue";
 
 export default {
   name: "prescriptions",
+  components: {MedicinesList},
   data() {
     return {
       prescriptionsService: null,
       prescriptions: null,
+      prescription: null,
       selectedPrescriptions: null,
       filters: {},
       statuses: [
         {label: "ACCOMPLISHED", value: "accomplished"},
         {label: "PENDING", value: "pending"},
         {label: "CANCELLED", value: "cancelled"}
-      ]
+      ],
+      prescriptionDialog: false
     }
   },
   created() {
@@ -97,25 +148,17 @@ export default {
         default:
           return null;
       }
+    },
+    showDetails(prescription) {
+      this.prescription = {...prescription};
+      this.prescriptionDialog = true;
     }
   }
 }
 </script>
 
 <style scoped>
-/*
-1. Id
-2. Fecha de la prescripción
-3. Especialidad médica
-4. Médico
-5. Estado de cumplimiento
-
-Fecha de la prescripción: Indica cuándo se realizó la prescripción médica.
-Nombre del medicamento: Especifica el nombre del medicamento prescrito.
-Dosis: Muestra la cantidad y frecuencia en la que se debe tomar el medicamento.
-Duración: Indica la duración total de la prescripción, es decir, por cuánto tiempo se debe tomar el medicamento.
-Estado de cumplimiento: Puede ser una indicación visual (por ejemplo, un ícono o un color) que muestra si la prescripción ha sido cumplida o está pendiente.
-Médico: Muestra el nombre del médico o profesional de la salud que realizó la prescripción.
-Condiciones médicas asociadas: Puede ser útil incluir alguna indicación o etiqueta que resuma la razón o condición médica para la cual se hizo la prescripción.
-*/
+.prescriptions-selected {
+  margin-bottom: 10px;
+}
 </style>
