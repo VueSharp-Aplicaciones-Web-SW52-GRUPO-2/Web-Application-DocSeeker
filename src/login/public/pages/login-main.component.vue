@@ -18,7 +18,8 @@ export default defineComponent({
           <template #title>Patient</template>
           <template #content>
             <img src="../../../assets/images/login-user.png" alt="Patient Image">
-            <pv-button class="pv-button" label="Login as Patient" @click="$router.push('/login-patient')" />
+            <pv-button class="pv-button" label="Login as Patient"
+                       @click="$router.push('/login-patient')"/>
           </template>
         </pv-card>
       </div>
@@ -43,24 +44,29 @@ export default defineComponent({
   border-color: #0093AB;
   border-radius: 20px;
 }
+
 .card {
   background: #0093AB;
   border-radius: 20px;
   margin: 10px;
 }
+
 img {
   width: 55%;
   padding: 20px;
 }
+
 .pv-button {
   border-radius: 20px;
 }
+
 img {
   animation-name: pulse;
   animation-duration: 5s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
 }
+
 @keyframes pulse {
   0% {
     transform: scale(1);

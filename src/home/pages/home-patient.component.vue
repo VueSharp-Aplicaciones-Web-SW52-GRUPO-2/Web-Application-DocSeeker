@@ -73,7 +73,8 @@ export default defineComponent({
       <pv-button class="w-full justify-content-center pv-button" label="Medical Records" @click="$router.push('/medical-record')" />
     </div>
     <div class="col-4">
-      <pv-button class="w-full justify-content-center pv-button" label="Prescriptions" @click="$router.push('/prescription')" />
+      <pv-button class="w-full justify-content-center pv-button" label="Prescriptions"
+                 @click="$router.push('/prescriptions')" />
     </div>
     <div class="col-4">
       <pv-button class="w-full justify-content-center pv-button" label="Appointments" @click="$router.push('/appointment')" />
