@@ -7,7 +7,7 @@ import axios  from "axios";
 
 export default defineComponent({
   name: "register-component",
-  components: {LoginToolbar, LoginFooter},
+  components: { LoginToolbar, LoginFooter },
   data() {
     return {
       username: '',
@@ -24,8 +24,30 @@ export default defineComponent({
       email: '',
       phone: '',
       cellphone: '',
-      password: ''
+      password: '',
+      formData: {
+        username: '',
+        name: '',
+        paternalname: '',
+        maternalname: '',
+        selectedGenre: null,
+        date: null,
+        email: '',
+        phone: '',
+        cellphone: '',
+        password: ''
+      }
     };
+  },
+  computed: {
+    isFormComplete() {
+      for (const field in this.formData) {
+        if (this.formData[field] === '') {
+          return false;
+        }
+      }
+      return true;
+    }
   },
   methods: {
     async signUp() {
@@ -47,6 +69,7 @@ export default defineComponent({
 
         // Aquí puedes agregar el código para mostrar un mensaje de éxito o redirigir a otra página
         console.log('Usuario creado con éxito');
+        this.$router.push({ name: 'login-patient' });
       } catch (error) {
         // Aquí puedes agregar el código para mostrar un mensaje de error
         console.error('Error al crear el usuario:', error);
@@ -77,49 +100,40 @@ const genres = ref([
           <template #content>
             <div class="grid">
               <div class="col-6">
-                  <label for="username">Username</label>
-                  <pv-input-text id="username" class="my-2" v-model="username" placeholder="DNI"/>
+                <label for="username">Username</label>
+                <pv-input-text id="username" class="my-2" v-model="formData.username" placeholder="DNI"/>
               </div>
               <div class="col-6">
-                  <label for="name">Name</label>
-                  <pv-input-text id="name" class="my-2" v-model="name" placeholder="Name"/>
+                <label for="name">Name</label>
+                <pv-input-text id="name" class="my-2" v-model="formData.name" placeholder="Name"/>
               </div>
               <div class="col-6">
                 <label for="lastname-1">Paternal Name</label>
-                <pv-input-text id="name" class="my-2" v-model="paternalname" placeholder="Paternal Name"/>
+                <pv-input-text id="name" class="my-2" v-model="formData.paternalname" placeholder="Paternal Name"/>
               </div>
               <div class="col-6">
                 <label for="lastname-2">Maternal Name</label>
-                <pv-input-text id="name" class="my-2" v-model="maternalname" placeholder="Maternal Name"/>
-              </div>
-              <div class="col-6">
-                <label for="genre">Genre</label>
-                <pv-dropdown v-model="selectedGenre" :options="genres" class="pv-dropdown my-2" optionLabel="name" placeholder="Select a Genre"/>
+                <pv-input-text id="name" class="my-2" v-model="formData.maternalname" placeholder="Maternal Name"/>
               </div>
 
-              <div class="col-6">
-                <label for="birthday">Birthday</label>
-                <pv-calendar v-model="date" class="my-2" dateFormat="dd/mm/yy" showIcon/>
-              </div>
               <div class="col-12">
                 <label for="email">Email</label>
-                <pv-input-text id="email" class="my-2" v-model="email" placeholder="Email"/>
+                <pv-input-text id="email" class="my-2" v-model="formData.email" placeholder="Email"/>
               </div>
               <div class="col-6">
                 <label for="phone">Phone</label>
-                <pv-input-mask id="phone" class="my-2" v-model="phone" placeholder="Phone" mask="9999999"/>
+                <pv-input-text id="phone" class="my-2" v-model="formData.phone" placeholder="Phone"/>
               </div>
               <div class="col-6">
                 <label for="cellphone">Cell Phone</label>
-                <pv-input-mask id="cellphone" class="my-2" v-model="cellphone" placeholder="Cell Phone" mask="999-999-999"/>
+                <pv-input-text id="cellphone" class="my-2" v-model="formData.cellphone" placeholder="Cell Phone" />
               </div>
               <div class="col-6">
                 <label for="password">Password</label>
-                <pv-password id="password" class="my-2" v-model="password" placeholder="Password" />
+                <pv-password id="password" class="my-2" v-model="formData.password" placeholder="Password" />
               </div>
             </div>
-            <pv-button class="pv-button my-2" label="Sign Up" @click="signUp" />
-
+            <pv-button class="pv-button my-2" label="Sign Up" @click="signUp" :disabled="!isFormComplete" />
           </template>
         </pv-card>
       </div>
