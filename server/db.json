@@ -79,6 +79,19 @@
         "Gastritis",
         "Chickenpox"
       ]
+    },
+    {
+      "username": "73957213",
+      "password": "password1",
+      "name": "Lucas",
+      "paternal": "Benedetti",
+      "maternal": "Rivas",
+      "genre": null,
+      "birthday": "2000-06-23T05:00:00.000Z",
+      "email": "lbenedetti2306@gmail.com",
+      "cellphone": "968-184-053",
+      "phone": "3626513",
+      "id": 3
     }
   ],
   "doctors": [
