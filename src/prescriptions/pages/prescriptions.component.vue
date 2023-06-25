@@ -38,11 +38,11 @@
         </template>
 
         <pv-column field="id" header="Id" sortable style="min-width:8rem"></pv-column>
-        <pv-column field="date" header="Date" sortable
+        <pv-column field="recommendation" header="Recommendation" sortable
                    style="min-width:12rem"></pv-column>
         <pv-column field="doctorName" header="Doctor Name" sortable
                    style="min-width:16rem"></pv-column>
-        <pv-column field="specialty" header="Specialty" sortable
+        <pv-column field="speciality" header="Specialty" sortable
                    style="min-width:10rem"></pv-column>
         <pv-column field="prescriptionStatus" header="Status" sortable style="min-width:12rem">
           <template #body="slotProps">
@@ -66,7 +66,6 @@
           <pv-card :pt="{ body: { class: 'bg-primary border-round-lg' } }">
             <template #title>Medical Prescription Status</template>
             <template #content>
-              <p><b>Prescription date:</b> {{ prescription.date }}</p>
               <p><b>State: </b>
                 <pv-tag :value="prescription.state"
                         :severity="getStatusLabel(prescription.state)"></pv-tag>
@@ -79,7 +78,7 @@
             <template #title>Doctor Information</template>
             <template #content>
               <p><b>Doctor name:</b> {{ prescription.doctorName }}</p>
-              <p><b>Specialty:</b> {{ prescription.specialty }}</p>
+              <p><b>Specialty:</b> {{ prescription.speciality }}</p>
             </template>
           </pv-card>
         </div>
@@ -108,6 +107,7 @@ import {FilterMatchMode} from "primevue/api";
 import {PrescriptionsApiService} from "../services/prescriptions-api.service.js";
 import MedicinesList from "../components/medicines-list.component.vue";
 import SideBar from "../../shared/components/side-bar.component.vue";
+import axios from "axios";
 
 export default {
   name: "prescriptions",
@@ -130,7 +130,10 @@ export default {
   created() {
     this.prescriptionsService = new PrescriptionsApiService();
     this.prescriptionsService.getAll()
-        .then(response => this.prescriptions = response.data);
+        .then(response => {
+          this.prescriptions = response.data;
+          this.getPrescriptionsDoctorDetails(); // Obtener detalles del doctor para cada prescripción
+        });
     this.initFilters();
   },
   mounted(){
@@ -161,9 +164,30 @@ export default {
       }
     },
     showDetails(prescription) {
-      this.prescription = {...prescription};
+      this.prescription = { ...prescription };
+      this.getPrescriptionsDoctorDetails(prescription.doctorId);
       this.prescriptionDialog = true;
-    }
+    },
+    getPrescriptionsDoctorDetails() {
+      const doctorIds = this.prescriptions.map(prescription => prescription.doctorId);
+      const apiUrl = `https://docseekerapi.azurewebsites.net/api/v1/doctors`;
+
+      axios.get(apiUrl)
+          .then(response => {
+            const doctors = response.data;
+
+            this.prescriptions.forEach(prescription => {
+              const doctor = doctors.find(doc => doc.id === prescription.doctorId);
+              if (doctor) {
+                prescription.doctorName = `${doctor.name} ${doctor.lastname}`;
+                prescription.speciality = doctor.speciality;
+              }
+            });
+          })
+          .catch(error => {
+            console.error('Error al obtener los detalles de los médicos:', error);
+          });
+    },
   }
 }
 </script>

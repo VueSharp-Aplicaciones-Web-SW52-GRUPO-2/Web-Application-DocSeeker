@@ -13,7 +13,7 @@ export default defineComponent({
     };
   },
   mounted() {
-    axios.get('http://localhost:3000/news')
+    axios.get('https://docseekerapi.azurewebsites.net/api/v1/new')
         .then(response => {
           this.news = response.data;
         })
@@ -41,11 +41,10 @@ export default defineComponent({
     <pv-data-table :value="news" :paginator="true" :rows="5" class="card">
       <pv-column field="image" header="Image">
         <template #body="slotProps">
-          <img alt="covid image" style="width: 400px; border-radius: 20px;" :src="slotProps.data.image"/>
+          <img alt="covid image" style="width: 400px; border-radius: 20px;" :src="slotProps.data.imageUrl"/>
         </template>
       </pv-column>
       <pv-column field="title" header="Title" :sortable="true"></pv-column>
-      <pv-column field="date" header="Date" :sortable="true"></pv-column>
       <pv-column field="description" header="Description"></pv-column>
     </pv-data-table>
   </div>

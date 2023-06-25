@@ -9,84 +9,85 @@ export default defineComponent({
   components: {SideBar, LoginFooter, LoginToolbar},
   data() {
     return {
-      appointments: []
+      appointments: [],
+      doctors: [],
     };
   },
+  computed: {
+    filteredAppointments() {
+      const patientId = localStorage.getItem('id');
+      return this.appointments.filter(appointment => appointment.patientId === parseInt(patientId));
+    },
+    doctorMap() {
+      return this.doctors.reduce((map, doctor) => {
+        map[doctor.id] = doctor.name + ' ' + doctor.lastname + ' ' + doctor.middlename;
+        return map;
+      }, {});
+    },
+    specialityMap() {
+      return this.doctors.reduce((map, doctor) => {
+        map[doctor.id] = doctor.speciality;
+        return map;
+      }, {});
+    },
+  },
   mounted() {
-    this.getAppointments();
+    axios
+        .get('https://docseekerapi.azurewebsites.net/api/v1/appointments')
+        .then(response => {
+          this.appointments = response.data;
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    this.fetchDoctors();
   },
   methods: {
-    getAppointments() {
-      const user = JSON.parse(localStorage.getItem('authenticatedUser'));
-      if (user && user.id) {
-
-        const url = 'http://localhost:3000/users';
-
-        axios.get(url)
-            .then(response => {
-              if (response && response.data) {
-                const users = response.data;
-                const currentUser = users.find(u => u.id === user.id);
-                if (currentUser && currentUser.appointments) {
-                  this.appointments = currentUser.appointments;
-                }
-              }
-            })
-            .catch(error => {
-              console.error('Error fetching user data:', error);
-            });
+    async fetchDoctors() {
+      try {
+        const response = await axios.get('https://docseekerapi.azurewebsites.net/api/v1/doctors');
+        this.doctors = response.data;
+      } catch (error) {
+        console.error(error);
       }
     },
-    formatDate(datetime) {
-      const options = {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-        hour: 'numeric',
-        minute: 'numeric',
-        second: 'numeric'
-      };
-      return new Date(datetime).toLocaleDateString(undefined, options);
+    getDoctorName(doctorId) {
+      return this.doctorMap[doctorId] || '';
+    },
+    getSpeciality(doctorId) {
+      return this.specialityMap[doctorId] || '';
     },
     async deleteAppointment(appointmentId) {
       try {
-        const user = JSON.parse(localStorage.getItem('authenticatedUser'));
-        if (user && user.id) {
-          const url = `http://localhost:3000/users/${user.id}`;
-          const response = await axios.get(url);
-          const currentUser = response.data;
-
-          // Buscar el índice de la cita en el array de citas del usuario
-          const index = currentUser.appointments.findIndex(appointment => appointment.id === appointmentId);
-
-          if (index !== -1) {
-            // Eliminar la cita del array
-            currentUser.appointments.splice(index, 1);
-
-            // Actualizar los datos del usuario en el servidor
-            await axios.put(url, currentUser);
-
-            // Actualizar el array de citas en el componente
-            this.appointments.splice(index, 1);
-
-            // Actualizar el usuario almacenado en el Local Storage
-            localStorage.setItem('authenticatedUser', JSON.stringify(currentUser));
-
-            console.log('Cita eliminada exitosamente');
-          } else {
-            console.log('Appointment not found');
-          }
-        }
+        await axios.delete(`https://docseekerapi.azurewebsites.net/api/v1/appointments/${appointmentId}`);
+        this.appointments = this.appointments.filter(appointment => appointment.id !== appointmentId);
       } catch (error) {
-        console.error('Error deleting appointment:', error);
+        console.error(error);
       }
-    }
-  }
+    },
+    formatDateTime(dateTime) {
+      const date = new Date(dateTime);
+      const formattedDate = date.toLocaleDateString('en-GB', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+      });
+      const formattedTime = date.toLocaleTimeString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: true,
+      });
+
+      return `${formattedDate} ${formattedTime}`;
+    },
+  },
+
 })
 </script>
 
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from 'vue';
+
 
 const items = ref([
   {
@@ -110,7 +111,7 @@ const items = ref([
   <div class="grid p-align-center card">
     <div class="col-12">
       <div class="p-fluid container">
-        <pv-card class="no-appointment text-center" v-if="appointments.length === 0">
+        <pv-card class="no-appointment text-center" v-if="filteredAppointments.length === 0">
           <template #content>
             <div class="grid">
               <div class="col-12">
@@ -119,17 +120,17 @@ const items = ref([
             </div>
           </template>
         </pv-card>
-        <pv-card class="pv-card" v-for="appointment in appointments" :key="appointment.datetime">
+        <pv-card class="pv-card" v-for="appointment in filteredAppointments" :key="appointment.id">
           <template #content>
             <div class="grid">
               <div class="col-12">
-                <h4>Doctor: {{ appointment.doctor }}</h4>
+                <h4>Speciality: {{ getSpeciality(appointment.doctorId) }} - ID: {{appointment.id}}</h4>
               </div>
               <div class="col-6">
-                <h4>{{ appointment.specialty }}</h4>
+                <h4>Doctor: {{ getDoctorName(appointment.doctorId) }}</h4>
               </div>
               <div class="col-6">
-                <p><strong>Date and Time:</strong> {{ formatDate(appointment.datetime) }}</p>
+                <h4><strong>Date and Time:</strong> {{ formatDateTime(appointment.date) }}</h4>
               </div>
               <div class="p-d-flex p-jc-end">
                 <pv-button class="p-button-rounded p-button-danger" @click="deleteAppointment(appointment.id)">
@@ -143,6 +144,7 @@ const items = ref([
     </div>
   </div>
 </template>
+
 
 
 <style scoped>

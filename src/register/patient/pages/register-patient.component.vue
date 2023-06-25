@@ -10,31 +10,16 @@ export default defineComponent({
   components: { LoginToolbar, LoginFooter },
   data() {
     return {
-      username: '',
-      name: '',
-      paternalname: '',
-      maternalname: '',
-      selectedGenre: null,
-      genres: [
-        { name: 'Male', code: 'MAL' },
-        { name: 'Female', code: 'FEM' },
-        { name: 'Other', code: 'OTH' }
-      ],
-      date: null,
-      email: '',
-      phone: '',
-      cellphone: '',
-      password: '',
+      // ...
       formData: {
         username: '',
         name: '',
-        paternalname: '',
-        maternalname: '',
-        selectedGenre: null,
+        lastname: '',  // Cambiar a maternalname
+        middlename: '',  // Cambiar a paternalname
+        selectedGenre: null,  // Cambiar a genre
         date: null,
         email: '',
         phone: '',
-        cellphone: '',
         password: ''
       }
     };
@@ -53,19 +38,18 @@ export default defineComponent({
     async signUp() {
       try {
         const newUser = {
-          username: this.username,
-          password: this.password,
-          name: this.name,
-          paternal: this.paternalname,
-          maternal: this.maternalname,
-          genre: this.selectedGenre,
-          birthday: this.date,
-          email: this.email,
-          cellphone: this.cellphone,
-          phone: this.phone
+          username: this.formData.username,
+          password: this.formData.password,
+          name: this.formData.name,
+          lastname: this.formData.lastname,
+          middlename: this.formData.middlename,
+          gender: this.formData.genre,
+          birthday: '2010-01-01T00:00:00',
+          email: this.formData.email,
+          phone: this.formData.phone
         };
-
-        await axios.post('http://localhost:3000/users', newUser);
+        console.log('newUser', newUser)
+        await axios.post('https://docseekerapi.azurewebsites.net/api/v1/patients', newUser);
 
         // Aquí puedes agregar el código para mostrar un mensaje de éxito o redirigir a otra página
         console.log('Usuario creado con éxito');
@@ -109,13 +93,12 @@ const genres = ref([
               </div>
               <div class="col-6">
                 <label for="lastname-1">Paternal Name</label>
-                <pv-input-text id="name" class="my-2" v-model="formData.paternalname" placeholder="Paternal Name"/>
+                <pv-input-text id="lastname-1" class="my-2" v-model="formData.lastname" placeholder="Paternal Name"/>
               </div>
               <div class="col-6">
                 <label for="lastname-2">Maternal Name</label>
-                <pv-input-text id="name" class="my-2" v-model="formData.maternalname" placeholder="Maternal Name"/>
+                <pv-input-text id="lastname-2" class="my-2" v-model="formData.middlename" placeholder="Maternal Name"/>
               </div>
-
               <div class="col-12">
                 <label for="email">Email</label>
                 <pv-input-text id="email" class="my-2" v-model="formData.email" placeholder="Email"/>
@@ -125,9 +108,10 @@ const genres = ref([
                 <pv-input-text id="phone" class="my-2" v-model="formData.phone" placeholder="Phone"/>
               </div>
               <div class="col-6">
-                <label for="cellphone">Cell Phone</label>
-                <pv-input-text id="cellphone" class="my-2" v-model="formData.cellphone" placeholder="Cell Phone" />
+                <label for="Gender">Genre</label>
+                <pv-input-text id="email" class="my-2" v-model="formData.genre" placeholder="Email"/>
               </div>
+
               <div class="col-6">
                 <label for="password">Password</label>
                 <pv-password id="password" class="my-2" v-model="formData.password" placeholder="Password" />

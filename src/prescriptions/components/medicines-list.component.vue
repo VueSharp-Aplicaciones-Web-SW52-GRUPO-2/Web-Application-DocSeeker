@@ -14,12 +14,38 @@
 </template>
 
 <script>
+
+import axios from "axios";
+
 export default {
-  name: "medicines-list",
-  props: {
-    medicines: Array
-  }
-}
+    name: "medicines-list",
+    props: {
+      prescriptionId: String
+    },
+    data() {
+      return {
+        medicines: []
+      };
+    },
+    created() {
+      this.fetchMedicines();
+    },
+    methods: {
+      fetchMedicines() {
+        axios.get('https://docseekerapi.azurewebsites.net/api/v1/medicines')
+            .then(response => {
+              // Verificar si hay datos en la respuesta
+              if (response.data && response.data.length > 0) {
+                // Asignar el primer medicamento a la lista de medicamentos
+                this.medicines = [response.data[0]];
+              }
+            })
+            .catch(error => {
+              console.error('Error al obtener los medicamentos:', error);
+            });
+      }
+    }
+  };
 </script>
 
 <style scoped>
