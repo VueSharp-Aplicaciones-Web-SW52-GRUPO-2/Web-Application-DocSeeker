@@ -18,7 +18,7 @@ export default defineComponent({
   methods: {
     async login() {
       try {
-        const response = await axios.get('http://localhost:3000/users', {
+        const response = await axios.get('https://docseekerapi.azurewebsites.net/api/v1/patients', {
           params: {
             username: this.username,
             password: this.password
@@ -27,6 +27,8 @@ export default defineComponent({
         const users = response.data;
         const authenticatedUser = users.find(user => user.username === this.username && user.password === this.password);
         if (authenticatedUser) {
+          const userid = authenticatedUser.id;
+          localStorage.setItem('id', userid);
           console.log('Authenticated User:', authenticatedUser);
           localStorage.setItem('authenticatedUser', JSON.stringify(authenticatedUser));
           console.log(localStorage);

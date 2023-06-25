@@ -18,13 +18,14 @@ export default defineComponent({
       doctors: []
     };
   },
-  async created() {
-    try {
-      const response = await axios.get('../../../server/db.json');
-      this.doctors = response.data.doctors;
-    } catch (error) {
-      console.error(error);
-    }
+  mounted() {
+    axios.get('https://docseekerapi.azurewebsites.net/api/v1/doctors')
+        .then(response => {
+          this.doctors = response.data;
+        })
+        .catch(error => {
+          console.error(error);
+        });
   }
 })
 </script>
@@ -47,13 +48,13 @@ export default defineComponent({
           <template #content>
             <div class="grid">
               <div class="col-6">
-                <h5 class="card-text">{{ doctor.name }}</h5>
+                <h5 class="card-text"> Dr. {{ doctor.name }} {{ doctor.lastname }} {{ doctor.middlename }}</h5>
               </div>
               <div class="col-6">
-                <h5 class="card-text">Specialty: {{ doctor.specialty }}</h5>
+                <h5 class="card-text">Specialty: {{ doctor.speciality }}</h5>
               </div>
               <div class="col-6">
-                <p class="card-text">{{ doctor.description }}</p>
+                <p class="card-text">Gender: {{ doctor.gender }}</p>
               </div>
               <div class="col-3">
                 <p class="card-text">Phone: {{ doctor.phone }}</p>

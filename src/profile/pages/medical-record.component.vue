@@ -19,8 +19,59 @@ export default defineComponent({
       const storedUser = localStorage.getItem('authenticatedUser');
       if (storedUser) {
         this.storedUser = JSON.parse(storedUser);
-        console.log('Stored User:', this.storedUser);
+        this.userId = this.storedUser.id;  // Almacenar el ID del usuario
+
+        // Obtener los registros del usuario desde el endpoint
+        fetch('https://docseekerapi.azurewebsites.net/api/v1/record')
+            .then(response => response.json())
+            .then(userRecords => {
+              // Filtrar los registros para obtener solo el del usuario actual
+              const currentUserRecord = userRecords.find(record => record.patientId === this.userId);
+
+              // Verificar si se encontró el registro del usuario actual
+              if (currentUserRecord) {
+                // Actualizar los datos almacenados en el componente con los del registro del usuario
+                this.storedUser.height = currentUserRecord.height;
+                this.storedUser.weight = currentUserRecord.weight;
+                this.storedUser.bodyMass = currentUserRecord.bodyMass;
+              }
+            })
+            .catch(error => {
+              console.error('Error retrieving user records:', error);
+            });
       }
+    },
+    updateInformation() {
+      // Obtener el ID del usuario desde el almacenamiento local
+      const userId = localStorage.getItem('id');
+
+      // Construir la URL del endpoint con el ID del usuario
+      const url = `https://docseekerapi.azurewebsites.net/api/v1/record/${userId}`;
+
+      // Realizar la actualización de la información del usuario
+      fetch(url, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          height: this.storedUser.height,
+          weight: this.storedUser.weight,
+          bodyMass: this.storedUser.bodyMass,
+          patientId: this.userId
+        })
+      })
+          .then(response => {
+            if (response.ok) {
+              console.log('User information updated successfully');
+              // Aquí puedes agregar acciones adicionales después de la actualización exitosa
+            } else {
+              console.error('Error updating user information');
+            }
+          })
+          .catch(error => {
+            console.error('Error updating user information:', error);
+          });
     }
   }
 })
@@ -44,24 +95,16 @@ export default defineComponent({
         </div>
         <div class="grid ">
           <div class="col-4 text-center">
-            <h5 class="card-text">Height: {{ storedUser.height }}</h5>
+            <h5 class="card-text">Height: <pv-input-text id="height" class="my-2" v-model="storedUser.height " placeholder="Height"/></h5>
           </div>
           <div class="col-4 text-center">
-            <h5 class="card-text">Weight: {{ storedUser.weight }}</h5>
+            <h5 class="card-text">Weight: <pv-input-text id="weight" class="my-2" v-model="storedUser.weight " placeholder="Weight"/></h5>
           </div>
           <div class="col-4 text-center">
-            <h5 class="card-text">BMI: {{ storedUser.bodyMass }}</h5>
+            <h5 class="card-text">BMI: <pv-input-text id="BonyMass" class="my-2" v-model="storedUser.bodyMass " placeholder="BMI"/></h5>
           </div>
           <div class="col-4 "></div>
-          <div class="col-4 ">
-            <h5 class="card-text">Allergies</h5>
-            <li v-for="allergy in storedUser.allergies" :key="allergy">{{ allergy }}</li>
-          </div>
-          <div class="col-4">
-            <h5 class="card-text">Pathological</h5>
-            <li v-for="pathologicals in storedUser.pathological" :key="pathologicals">{{ pathologicals }}</li>
-          </div>
-          <pv-button class="pv-button mt-5"  label="Change information"/>
+          <pv-button class="pv-button mt-5" label="Change information" @click="updateInformation" />
         </div>
       </template>
     </pv-card>

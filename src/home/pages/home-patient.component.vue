@@ -17,13 +17,14 @@ export default defineComponent({
       news: []
     };
   },
-  async created() {
-    try {
-      const response = await axios.get('../../../server/db.json');
-      this.news = response.data.news;
-    } catch (error) {
-      console.error(error);
-    }
+  mounted() {
+    axios.get('https://docseekerapi.azurewebsites.net/api/v1/new')
+        .then(response => {
+          this.news = response.data;
+        })
+        .catch(error => {
+          console.error(error);
+        });
   }
 })
 </script>
@@ -42,16 +43,15 @@ export default defineComponent({
     </div>
   </div>
   <div class="flex flex-row p-align-center card">
-          <pv-carousel :value="news" :numVisible="3" :numScroll="3" :responsiveOptions="responsiveOptions" circular :autoplayInterval="3000">
+          <pv-carousel :value="news" :numVisible="3" :numScroll="3" :responsiveOptions="responsiveOptions" circular :autoplayInterval="9000">
             <template #item="slotProps">
               <div class="border-1 surface-border  m-2 py-5 px-3 bg-white carousel">
                 <div class="mb-3 text-center ">
-                  <img alt="covid image" style="width: 100%; border-radius: 20px;" src="https://www.paho.org/sites/default/files/styles/max_1500x1500/public/2021-05/covid-19-variants.jpg?itok=szJH1mCw"/>
+                  <img alt="covid image" style="width: 80%; border-radius: 20px;" :src="slotProps.data.imageUrl"/>
                 </div>
                 <div>
                   <h3 class="mb-3 text-center ">{{ slotProps.data.title }}</h3>
                   <h5 class="mt-0 mb-3 text-justify">{{ slotProps.data.description }}</h5>
-                  <h6 class="mb-1">{{ slotProps.data.date }}</h6>
                   </div>
                 </div>
             </template>

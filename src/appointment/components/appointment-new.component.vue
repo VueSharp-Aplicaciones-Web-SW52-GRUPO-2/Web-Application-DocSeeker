@@ -26,15 +26,15 @@ export default defineComponent({
   },
   computed: {
     doctorOptions() {
-      return this.filteredDoctors.map(doctor => doctor.name);
+      return this.filteredDoctors.map(doctor => `${doctor.name} ${doctor.lastname} ${doctor.middlename}`);
     }
   },
   methods: {
     async fetchSpecialties() {
       try {
-        const response = await axios.get('http://localhost:3000/doctors');
+        const response = await axios.get('https://docseekerapi.azurewebsites.net/api/v1/doctors');
         const doctors = response.data;
-        const specialties = doctors.map(doctor => doctor.specialty);
+        const specialties = doctors.map(doctor => doctor.speciality);
         this.specialties = [...new Set(specialties)];
       } catch (error) {
         console.error(error);
@@ -42,7 +42,7 @@ export default defineComponent({
     },
     async fetchDoctors() {
       try {
-        const response = await axios.get('http://localhost:3000/doctors');
+        const response = await axios.get('https://docseekerapi.azurewebsites.net/api/v1/doctors');
         this.doctors = response.data;
       } catch (error) {
         console.error(error);
@@ -50,7 +50,7 @@ export default defineComponent({
     },
     filterDoctors() {
       if (this.selectedSpecialty) {
-        this.filteredDoctors = this.doctors.filter(doctor => doctor.specialty === this.selectedSpecialty);
+        this.filteredDoctors = this.doctors.filter(doctor => doctor.speciality === this.selectedSpecialty);
       } else {
         this.filteredDoctors = [];
       }
@@ -65,36 +65,33 @@ export default defineComponent({
     },
     async createAppointment() {
       try {
-        const authenticatedUser = JSON.parse(localStorage.getItem('authenticatedUser'));
+        const patientId = JSON.parse(localStorage.getItem('id'));
+        const selectedDoctorId = this.doctors.find(doctor => `${doctor.name} ${doctor.lastname} ${doctor.middlename}` === this.selectedDoctor)?.id;
 
-        const lastAppointment = authenticatedUser.appointments.slice(-1)[0];
-        const newId = lastAppointment ? lastAppointment.id + 1 : 1;
+        const selectedDateTime = new Date(this.datetime12h);
 
-        const newAppointment = {
-          id: newId,
-          specialty: this.selectedSpecialty,
-          doctor: this.selectedDoctor,
-          datetime: this.datetime12h
+        const year = selectedDateTime.getFullYear();
+        const month = selectedDateTime.getMonth() + 1; // Los meses son indexados desde 0, se suma 1 para ajustar
+        const day = selectedDateTime.getDate();
+        const hours = selectedDateTime.getHours();
+        const minutes = selectedDateTime.getMinutes();
+        const seconds = selectedDateTime.getSeconds();
+        const timezoneOffset = selectedDateTime.getTimezoneOffset() * 60000;
+
+        const isoDateString = new Date(selectedDateTime - timezoneOffset).toISOString();
+        console.log(selectedDateTime)
+        const appointmentData = {
+          date: isoDateString,
+          doctorId: selectedDoctorId,
+          patientId: patientId
         };
 
-        authenticatedUser.appointments.push(newAppointment);
-
-        await axios.put(`http://localhost:3000/users/${authenticatedUser.id}`, authenticatedUser);
-
-        localStorage.setItem('authenticatedUser', JSON.stringify(authenticatedUser));
-
-        this.selectedSpecialty = null;
-        this.selectedDoctor = null;
-        this.datetime12h = null;
-
-        // Actualizar la lista de citas después de agregar una nueva cita
-        this.fetchUserAppointments();
-
-        console.log('Cita creada exitosamente');
+        const response = await axios.post('https://docseekerapi.azurewebsites.net/api/v1/appointments', appointmentData);
+        console.log(response.data);
       } catch (error) {
         console.error(error);
       }
-    },
+    }
   }
 });
 </script>
@@ -139,7 +136,7 @@ const items = ref([
               </div>
               <div class="col-12 ">
                 <label for="date">Date</label>
-                <pv-calendar id="calendar-12h" v-model="datetime12h" showTime hourFormat="12" inputId="birth_date"/>
+                <pv-calendar id="calendar-12h" v-model="datetime12h" showTime hourFormat="24" inputId="birth_date"/>
               </div>
             </div>
             <pv-button class="pv-button my-2" label="Create Appointment" @click="createAppointment" />
